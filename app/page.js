@@ -8,6 +8,7 @@ import { useState } from 'react';
 function SearchBar({filterText, onFilterTextChange}) {
   return (
     <form>
+      <p>Procure uma mensagem:</p>
       <input type="text" value={filterText} placeholder="Search..." 
       onChange={(e) => onFilterTextChange(e.target.value)}/>
     </form>
@@ -28,7 +29,7 @@ function ProductRow({ product }) {
 function ProductTable({ blogMessages, filterText}) {
   const rows = [];
   blogMessages.forEach((product) => {
-    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) >= 0) {
       return;
     }
     rows.push(
@@ -42,8 +43,8 @@ function ProductTable({ blogMessages, filterText}) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Texto</th>
+          <th>Author</th>
+          <th>Message</th>
           <th>Data</th>
         </tr>
       </thead>
