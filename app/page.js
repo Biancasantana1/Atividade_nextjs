@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import React from 'react';
 import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function SearchBar({filterText, onFilterTextChange}) {
   return (
@@ -64,7 +65,7 @@ function FilterableMessageTable({ messages }) {
   ); 
 }
 
-export default function Home() {
+/*export default function Home() {
     
   const [blogMessages, setBlogMessages] = useState([]);
   
@@ -74,6 +75,27 @@ export default function Home() {
         setBlogMessages(data);
     });
     
+    return (
+      <main className={styles.main}>
+        <FilterableMessageTable messages={blogMessages} />
+      </main>
+    )
+}*/
+
+
+
+export default function Home() {
+    
+  const [blogMessages, setBlogMessages] = useState([]);
+
+  useEffect(() => {
+    fetch('https://script.google.com/macros/s/AKfycbzBn3sALe1rYjz7Ze-Ik7q9TEVP0I2V3XX7GNcecWP8NvCzGt4yO_RT1OlQp09TE9cU/exec')
+      .then(response => response.json())
+      .then(data => {
+          setBlogMessages(data);
+      });
+  }, []);
+
     return (
       <main className={styles.main}>
         <FilterableMessageTable messages={blogMessages} />
