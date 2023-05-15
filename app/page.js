@@ -14,6 +14,17 @@ function SearchBar({filterText, onFilterTextChange}) {
   );
 }
 
+function ProductRow({ product }) {
+  return (
+    <tr>
+      <td>{product.name}</td>
+      <td>{product.message}</td>
+      <td>{product.date}</td>
+    </tr>
+  );
+}
+
+
 function ProductTable({ blogMessages, filterText}) {
   const rows = [];
   blogMessages.forEach((product) => {
