@@ -17,9 +17,9 @@ function SearchBar({filterText, onFilterTextChange}) {
 function ProductRow({ product }) {
   return (
     <tr>
-      <td>{product.name}</td>
-      <td>{product.message}</td>
-      <td>{product.date}</td>
+      <td>{product[1]}</td>
+      <td>{product[0]}</td>
+      <td>{product[2]}</td>
     </tr>
   );
 }
@@ -28,13 +28,13 @@ function ProductRow({ product }) {
 function ProductTable({ blogMessages, filterText}) {
   const rows = [];
   blogMessages.forEach((product) => {
-    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
     rows.push(
       <ProductRow
         product={product}
-        key={product.name} />
+        key={product[1]} />
     );
   });
 
