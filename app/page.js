@@ -36,7 +36,7 @@ function ProductTable({ blogMessages, filterText}) {
     rows.push(
       <ProductRow
         product={product}
-        key={product[0]} />
+        key={product[1]} />
     );
   });
 
