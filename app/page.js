@@ -30,7 +30,7 @@ function ProductRow({ product }) {
 function ProductTable({ blogMessages, filterText}) {
   const rows = [];
   blogMessages.forEach((product) => {
-    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) !== -1) {
       return;
     }
     rows.push(
