@@ -29,7 +29,7 @@ function ProductRow({ product }) {
 function ProductTable({ blogMessages, filterText}) {
   const rows = [];
   blogMessages.forEach((product) => {
-    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) >= 0) {
+    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
       return;
     }
     rows.push(
@@ -45,7 +45,7 @@ function ProductTable({ blogMessages, filterText}) {
         <tr>
           <th>Author</th>
           <th>Message</th>
-          <th>Data</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
