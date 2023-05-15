@@ -17,8 +17,8 @@ function SearchBar({filterText, onFilterTextChange}) {
 function ProductRow({ product }) {
   return (
     <tr>
-      <td>{product[1]}</td>
       <td>{product[0]}</td>
+      <td>{product[1]}</td>
       <td>{product[2]}</td>
     </tr>
   );
@@ -34,7 +34,7 @@ function ProductTable({ blogMessages, filterText}) {
     rows.push(
       <ProductRow
         product={product}
-        key={product[1]} />
+        key={product[0]} />
     );
   });
 
@@ -52,13 +52,13 @@ function ProductTable({ blogMessages, filterText}) {
   );
 }
 
-function FilterableMessageTable({ blogMessages }) {
+function FilterableMessageTable({ messages }) {
   const [filterText, setFilterText] = useState('');
   return (
     <div>
       <SearchBar filterText={filterText}
       onFilterTextChange={setFilterText}/>
-      <ProductTable blogMessages={blogMessages} filterText={filterText}/>
+      <ProductTable blogMessages={messages} filterText={filterText}/>
     </div>
   ); 
 }
