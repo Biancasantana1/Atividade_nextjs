@@ -30,14 +30,15 @@ function ProductRow({ product }) {
 function ProductTable({ blogMessages, filterText}) {
   const rows = [];
   blogMessages.forEach((product) => {
-    if (String (product[0]).toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
-      return;
-    }
+    if ((String(product[0]).toLowerCase().includes(filterText.toLowerCase()) ||
+    String(product[1]).toLowerCase().includes(filterText.toLowerCase()))) {
+    
     rows.push(
       <ProductRow
         product={product}
         key={product[1] + product[2]} />
     );
+    }
   });
 
   return (
