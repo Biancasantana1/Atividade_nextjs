@@ -4,7 +4,10 @@ import Image from 'next/image'
 import styles from './page.module.css'
 //import React from 'react';
 //import { useState } from 'react';
+
 import React, { useState, useEffect } from 'react';
+
+const formattedDate = date.toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
 function SearchBar({filterText, onFilterTextChange}) {
   return (
@@ -17,14 +20,18 @@ function SearchBar({filterText, onFilterTextChange}) {
 }
 
 function ProductRow({ product }) {
+  const date = new Date(product[2]);
+  const formattedDate = date.toLocaleString();
+
   return (
     <tr>
       <td>{product[1]}</td>
       <td>{product[0]}</td>
-      <td>{product[2]}</td>
+      <td>{formattedDate}</td>
     </tr>
   );
 }
+
 
 
 function ProductTable({ blogMessages, filterText}) {
